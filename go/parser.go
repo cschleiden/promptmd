@@ -1,8 +1,7 @@
-package parser
+package promptmd
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"strings"
 
@@ -44,6 +43,10 @@ func ParsePromptFile(filePath string) (*PromptFile, error) {
 				inPrompt = true
 			}
 			continue
+		} else {
+			if !inFrontMatter && !inPrompt {
+				inPrompt = true
+			}
 		}
 
 		if inFrontMatter {

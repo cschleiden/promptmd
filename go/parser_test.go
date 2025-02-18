@@ -1,18 +1,17 @@
-package parser_test
+package promptmd_test
 
 import (
-	"testing"
-	"path/filepath"
 	"os"
-	"io/ioutil"
-	"parser"
+	"testing"
+
+	"github.com/cschleiden/promptmd"
 )
 
 func TestParsePromptFile_EmptyFile(t *testing.T) {
 	filePath := createTempFile(t, "")
 	defer os.Remove(filePath)
 
-	promptFile, err := parser.ParsePromptFile(filePath)
+	promptFile, err := promptmd.ParsePromptFile(filePath)
 	if err != nil {
 		t.Fatalf("Error parsing prompt file: %v", err)
 	}
@@ -34,7 +33,7 @@ description: This is an example prompt file.
 	filePath := createTempFile(t, content)
 	defer os.Remove(filePath)
 
-	promptFile, err := parser.ParsePromptFile(filePath)
+	promptFile, err := promptmd.ParsePromptFile(filePath)
 	if err != nil {
 		t.Fatalf("Error parsing prompt file: %v", err)
 	}
@@ -60,7 +59,7 @@ The weather is sunny with a high of 75 degrees.`
 	filePath := createTempFile(t, content)
 	defer os.Remove(filePath)
 
-	promptFile, err := parser.ParsePromptFile(filePath)
+	promptFile, err := promptmd.ParsePromptFile(filePath)
 	if err != nil {
 		t.Fatalf("Error parsing prompt file: %v", err)
 	}
@@ -91,7 +90,7 @@ The weather is sunny with a high of 75 degrees.`
 	filePath := createTempFile(t, content)
 	defer os.Remove(filePath)
 
-	promptFile, err := parser.ParsePromptFile(filePath)
+	promptFile, err := promptmd.ParsePromptFile(filePath)
 	if err != nil {
 		t.Fatalf("Error parsing prompt file: %v", err)
 	}
@@ -106,7 +105,7 @@ The weather is sunny with a high of 75 degrees.`
 }
 
 func createTempFile(t *testing.T, content string) string {
-	tmpFile, err := ioutil.TempFile("", "example")
+	tmpFile, err := os.CreateTemp("", "example")
 	if err != nil {
 		t.Fatalf("Error creating temp file: %v", err)
 	}
