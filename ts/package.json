@@ -1,0 +1,11 @@
+{
+  "name": "promptmd-ts",
+  "version": "1.0.0",
+  "main": "parser.ts",
+  "dependencies": {
+    "yaml": "^1.10.2"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
