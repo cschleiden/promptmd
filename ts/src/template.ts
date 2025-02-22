@@ -35,10 +35,14 @@ export function prepare(template: string): (args: args) => string {
   };
 }
 
-function formatVar(a: unknown): string {
-  if (a === null || a === undefined) {
-    return "";
+function formatVar(v: unknown): string {
+  if (
+    typeof v === "string" ||
+    typeof v === "number" ||
+    typeof v === "boolean"
+  ) {
+    return String(v);
   }
 
-  return String(a);
+  return "";
 }
