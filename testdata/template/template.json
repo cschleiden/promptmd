@@ -1,0 +1,79 @@
+[
+  {
+    "name": "no variables",
+    "input": "Hello World!",
+    "vars": {},
+    "output": "Hello World!"
+  },
+  {
+    "name": "variables are case-sensitive",
+    "input": "{{a}}{{A}}",
+    "vars": {
+      "a": "hello"
+    },
+    "output": "hello"
+  },
+  {
+    "name": "repeated variables",
+    "input": "hello {{a}}{{b}}, {{a}}",
+    "vars": {
+      "a": "world",
+      "b": "!"
+    },
+    "output": "hello world!, world"
+  },
+  {
+    "name": "multiple variables",
+    "input": "{{a}}{{b}}",
+    "vars": {
+      "a": "hello",
+      "b": "world"
+    },
+    "output": "helloworld"
+  },
+  {
+    "name": "empty variables",
+    "input": "{{a}}{{b}}",
+    "vars": {
+      "a": "",
+      "b": ""
+    },
+    "output": ""
+  },
+  {
+    "name": "null variables",
+    "input": "{{a}}{{b}}",
+    "vars": {
+      "a": null,
+      "b": null
+    },
+    "output": ""
+  },
+  {
+    "name": "number variables",
+    "input": "{{a}}{{b}}",
+    "vars": {
+      "a": 1,
+      "b": 2
+    },
+    "output": "12"
+  },
+  {
+    "name": "boolean variables",
+    "input": "{{a}}{{b}}",
+    "vars": {
+      "a": true,
+      "b": false
+    },
+    "output": "truefalse"
+  },
+  {
+    "name": "object variables",
+    "input": "{{a}}{{b}}",
+    "vars": {
+      "a": {},
+      "b": []
+    },
+    "output": "[object Object]"
+  }
+]

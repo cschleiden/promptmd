@@ -1,0 +1,46 @@
+{
+  "name": "promptmd",
+  "version": "0.0.1",
+  "author": "Christopher Schleiden",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./parse": {
+      "import": "./dist/parse.mjs",
+      "require": "./dist/parse.js"
+    },
+    "./template": {
+      "import": "./dist/template.mjs",
+      "require": "./dist/template.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*.d.ts"
+      ]
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.5",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.6"
+  },
+  "dependencies": {
+    "yaml": "^2.7.0"
+  }
+}

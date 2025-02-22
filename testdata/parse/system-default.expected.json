@@ -1,0 +1,8 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "message": "simple prompt\n\nhello world"
+    }
+  ]
+}
