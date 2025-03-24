@@ -1,9 +1,9 @@
 const VariableRegex = /\{\{([a-zA-Z0-9_]+)\}\}/g;
 
-export type args = { [variableName: string]: unknown };
+export type Vars = { [variableName: string]: unknown };
 
-export function prepare(template: string): (args: args) => string {
-  const segments: (string | ((a: args) => string))[] = [];
+export function prepare(template: string): (args: Vars) => string {
+  const segments: (string | ((a: Vars) => string))[] = [];
   let lastIndex = 0;
   let match;
 
@@ -21,14 +21,18 @@ export function prepare(template: string): (args: args) => string {
     segments.push(template.substring(lastIndex));
   }
 
-  return (args: args) => {
+  if (segments.length <= 1) {
+    return () => template; // No variables found, return the original template
+  }
+
+  return (vars: Vars) => {
     let r = "";
 
     for (const segment of segments) {
       if (typeof segment === "string") {
         r += segment;
       } else {
-        r += segment(args);
+        r += segment(vars);
       }
     }
     return r;

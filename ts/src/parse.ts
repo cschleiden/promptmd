@@ -1,5 +1,5 @@
-import { Prompt, PromptTemplate, Role, Roles } from "./types";
 import { parse as parseYaml } from "yaml";
+import { Message, Prompt, Role, Roles } from "./types";
 
 const frontmatterRegex = /^---\n([\s\S]*?)\n---\n/;
 
@@ -39,9 +39,9 @@ const roleRegex = new RegExp(
   "im"
 );
 
-function parseMessages(content: string): PromptTemplate[] {
+function parseMessages(content: string): Message[] {
   // Parse the template(s)
-  const messages: PromptTemplate[] = [];
+  const messages: Message[] = [];
 
   // Trim and remove empty chunks
   const chunks = content.split(roleRegex).filter((x) => x.trim());

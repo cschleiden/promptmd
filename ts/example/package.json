@@ -1,0 +1,19 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "esrun index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "openai": "^4.89.0",
+    "promptmd": "^0.0.2"
+  },
+  "devDependencies": {
+    "esrun": "^3.2.26"
+  }
+}

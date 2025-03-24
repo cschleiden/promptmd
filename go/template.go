@@ -9,8 +9,15 @@ type Vars map[string]any
 
 type PreparedFunc func(vars Vars) (string, error)
 
-func Prepare(template string) PreparedFunc {
+func PrepareString(template string) PreparedFunc {
 	segments := parseTemplate(template)
+
+	// If there are no variables, return a function that just returns the template
+	if len(segments) == 1 {
+		return func(vars Vars) (string, error) {
+			return template, nil
+		}
+	}
 
 	return func(vars Vars) (string, error) {
 		result := ""

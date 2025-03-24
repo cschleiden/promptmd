@@ -29,7 +29,7 @@ func Test_Template_Prepare(t *testing.T) {
 	// Run test cases
 	for _, test := range tests {
 		t.Run(test.Name, func(t *testing.T) {
-			prepared := Prepare(test.Input)
+			prepared := PrepareString(test.Input)
 			result, err := prepared(test.Vars)
 
 			if err != nil {
